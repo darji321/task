@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel='stylesheet' type='text/css'  href="{% static 'css/style.css' %}">
+</head>
+
+<body background="{% static 'images/bg.jpg' %}">
+    <form class="box" action="login" method="post">
+	    <h1><u><i><font color=lightgreen>Login</font></i></u></h1>
+        {% csrf_token %}
+        <input type="email" name="email" placeholder="Email">
+        <input type="password" name="password" placeholder="Password">
+        <input type="submit" value="Login">
+		<font color='#3498db'>Don't have an account?</font> <a href="register"><font color='white'>Create</font></a>
+		<div>
+            {% for message in messages %}
+            <font color='white'><h3> {{message}}</h3></font>
+            {% endfor %}
+		</div>
+    </form>
+
+</body>
+</html>

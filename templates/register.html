@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration</title>
+    <link rel='stylesheet' type='text/css'  href="{% static 'css/style.css' %}">
+</head>
+
+<body background="{% static 'images/bg.jpg' %}">
+
+    <form class="box" action="register" method="post" enctype='multipart/form-data'>
+        {% csrf_token %}
+		<h1><u><i><font color=lightgreen>Registration</font></i></u></h1>
+		
+		
+        <input type="text" name="first_name" placeholder="First Name">
+        <input type="text" name="last_name" placeholder="Last Name">
+        <input type="email" name="email" placeholder="Email">
+		<input type="file" name="img" >
+        <input type="password" name="password1" placeholder="Password">
+        <input type="password" name="password2" placeholder="Confirm Password">
+        <input type="Submit" value="Register">
+		<div>
+        {% for message in messages %}
+        <font color='white'><h3> {{message}} </h3></font>
+        {% endfor %}
+		</div>
+    </form>
+
+    
+
+</body>
+</html>
