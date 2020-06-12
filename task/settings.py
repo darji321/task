@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -37,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'task_1'
+    'task_1',
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -81,7 +84,7 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD': '1234',
         'HOST': 'localhost',
-        'PORT':'5433'
+        'PORT':'5432'
     }
 }
 
@@ -122,11 +125,31 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
+
+AWS_ACCESS_KEY_ID = 'AKIA4RP2XNJ53ZM33THX'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'task1-assets'
+
+
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+
+AWS_LOCATION = 'static'
+
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, 'static'),
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+DEFAULT_FILE_STORAGE = 'task.storage_backends.MediaStorage' 
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+
+
+
+
