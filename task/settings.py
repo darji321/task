@@ -81,9 +81,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'task',
-        'USER': 'postgres',
-        'PASSWORD': '1234',
-        'HOST': 'localhost',
+        'USER': '############',# Enter Username 
+        'PASSWORD': '#############',#Enter Password
+        'HOST': '######################################',# Enter RDS-Endpoint Here....
         'PORT':'5432'
     }
 }
@@ -126,9 +126,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 
-AWS_ACCESS_KEY_ID = 'AKIA4RP2XNJ53ZM33THX'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'task1-assets'
+AWS_ACCESS_KEY_ID = '#############################'  #Enter AWS_ACCESS_KEY_ID Here
+AWS_SECRET_ACCESS_KEY = '##############################'  # Enter AWS_SECRET_ACCESS_KEY Here
+AWS_STORAGE_BUCKET_NAME = '#########'# Enter AWS_STORAGE_BUCKET_NAME Here
 
 
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
